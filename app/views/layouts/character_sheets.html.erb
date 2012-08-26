@@ -1,0 +1,14 @@
+<% content_for :content do %>
+	<div id="page_container">
+	  <header id="header">
+	    <%= yield :header %>
+	  </header>
+	  <section id="page">
+	    <%= yield :body %>
+	  </section>
+	  <footer>
+		<%= yield :side_body %>
+	  </footer>
+	</div>
+<% end %>
+<%= render :template => 'layouts/application'%>

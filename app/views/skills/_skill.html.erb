@@ -1,0 +1,11 @@
+	<%=	f.fields_for skill do |skill_form|	%>
+	<tr>
+		<td class="skillclass"></td>
+		<td class="skillname"><%= skill.name %></td>
+		<td class="skillkeyability"><%= skill.characteristic[0..2].upcase %></td>
+		<td class="skillmodifier"></td>
+		<td class="skillabilitymodifier"></td>
+		<td class="skillranks"></td>
+		<td class="skillmisc"></td>
+	</tr>
+	<% end %>

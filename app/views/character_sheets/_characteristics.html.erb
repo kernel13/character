@@ -1,0 +1,63 @@
+<table id="caracteristics">
+	<tr>
+		<th><%= t('character_sheet.ability_name').html_safe %></th>
+		<th><%= t('character_sheet.ability_score').html_safe %></th>
+		<th><%= t('character_sheet.ability_modifier').html_safe %></th>
+		<th><%= t('character_sheet.temporary_score').html_safe %></th>
+		<th><%= t('character_sheet.temporary_modifier').html_safe %></th>
+	</tr>
+	<tr>
+		<td class="label">
+			<span class="shortName"><%= t('character_sheet.strength')[0..2].upcase %></span></br><span class="longName"><%= t('character_sheet.strength') %></span>
+		</td>
+		<td><%= f.text_field :strength  -%><br /></td>
+		<td class="abilitybonus"><%=  @character_sheet.characteristic_bonus(@character_sheet.strength) -%></td>
+		<td ><%= f.text_field :temporarystrength  -%><br /></td>
+		<td class="temporarybonus"><%= @character_sheet.characteristic_bonus(@character_sheet.temporarystrength) -%></td>
+	</tr>
+	<tr>
+			<td class="label">
+				<span class="shortName"><%= t('character_sheet.dexterity')[0..2].upcase %></span></br><span class="longName"><%= t('character_sheet.dexterity') %></span>
+			</td>
+			<td><%= f.text_field :dexterity  -%><br /></td>
+			<td class="abilitybonus"><%=  @character_sheet.characteristic_bonus(@character_sheet.dexterity) -%></td>
+			<td class="temporarybonus"><%= f.text_field :temporarydexterity  -%><br /></td>
+			<td class="temporarybonus"><%=  @character_sheet.characteristic_bonus(@character_sheet.temporarydexterity) -%></td>
+	</tr>
+	<tr>
+			<td class="label">
+				<span class="shortName"><%= t('character_sheet.constitution')[0..2].upcase %></span></br><span class="longName"><%= t('character_sheet.constitution') %></span>
+			</td>
+			<td><%= f.text_field :constitution  -%><br /></td>
+			<td class="abilitybonus"><%=  @character_sheet.characteristic_bonus(@character_sheet.constitution) -%></td>
+			<td class="temporarybonus"><%= f.text_field :temporaryconstitution  -%><br /></td>
+			<td class="temporarybonus"><%=  @character_sheet.characteristic_bonus(@character_sheet.temporaryconstitution) -%></td>
+	</tr>
+	<tr>
+		<td class="label">
+			<span class="shortName"><%= t('character_sheet.intelligence')[0..2].upcase %></span></br><span class="longName"><%= t('character_sheet.intelligence') %></span>
+		</td>
+		<td><%= f.text_field :intelligence  -%><br /></td>
+		<td class="abilitybonus"><%=  @character_sheet.characteristic_bonus(@character_sheet.intelligence) -%></td>
+		<td class="temporarybonus"><%= f.text_field :temporaryintelligence  -%><br /></td>
+		<td class="temporarybonus"><%=  @character_sheet.characteristic_bonus(@character_sheet.temporaryintelligence) -%></td>
+	</tr>
+	<tr>
+		<td class="label">
+			<span class="shortName"><%= t('character_sheet.wisdom')[0..2].upcase %></span></br><span class="longName"><%= t('character_sheet.wisdom') %></span>
+		</td>
+		<td><%= f.text_field :wisdom  -%><br /></td>
+		<td class="abilitybonus"><%=  @character_sheet.characteristic_bonus(@character_sheet.wisdom) -%></td>
+		<td class="temporarybonus"><%= f.text_field :temporarywisdom  -%><br /></td>
+		<td class="temporarybonus"><%=  @character_sheet.characteristic_bonus(@character_sheet.temporarywisdom) -%></td>
+	</tr>
+	<tr>
+			<td class="label">
+				<span class="shortName"><%= t('character_sheet.charisma')[0..2].upcase %></span></br><span class="longName"><%= t('character_sheet.charisma') %></span>
+			</td>
+			<td><%= f.text_field :charisma  -%><br /></td>
+			<td class="abilitybonus"><%=  @character_sheet.characteristic_bonus(@character_sheet.charisma) -%></td>
+			<td class="temporarybonus"><%= f.text_field :temporarycharisma  -%><br /></td>
+			<td class="temporarybonus"><%=  @character_sheet.characteristic_bonus(@character_sheet.temporarycharisma) -%></td>
+	</tr>
+</table>

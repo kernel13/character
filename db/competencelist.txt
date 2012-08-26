@@ -1,0 +1,31 @@
+Appraise::intelligence::1
+Balance::dexterity::1
+Bluff::charisma::1
+Climb::strengh::1
+Concentration::constitution::1 
+Decipher Script::intelligence::0 
+Diplomacy::charisma::1 
+Disable Device::intelligence::0 
+Disguise::charisma::1 
+Escape Artist::dexterity::1
+Forgery::intelligence::1
+Gather Information::charisma::1 
+Handle Animal::charisma::0 
+Heal::wisdom::1 
+Hide::dexterity::1
+Intimidate::charisma::1 
+Jump::strengh::1
+Listen::wisdom::1
+Move Silently::dexterity::1 
+Open Lock::dexterity::0
+Ride::dexterity::1
+Search::intelligence::1 
+Sense Motive::wisdom::1 
+Sleight of Hand::dexterity::0 
+Spellcraft::intelligence::0 
+Spot::wisdom::1 
+Survival::wisdom::1 
+Swim::strengh::1 
+Tumble::dexterity::0 
+Use Magic Device::charisma::0 
+Use Rope::dexterity::1
