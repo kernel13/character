@@ -25,7 +25,7 @@ describe CharacterSheetsController do
   # update the return value of this method accordingly.
   def valid_attributes
     {
-      :name => 'character_name'  
+      :name => 'character_name'
     }
   end
 
@@ -84,7 +84,7 @@ describe CharacterSheetsController do
       it "redirects to the created character_sheet" do
         post :create, {:character_sheet => valid_attributes}, valid_session
         response.should redirect_to(CharacterSheet.last)
-      end
+      end      
     end
 
     describe "with invalid params" do
@@ -163,4 +163,13 @@ describe CharacterSheetsController do
     end
   end
 
+  describe "With Skills" do
+      it "should have skills" do
+          @count = Skill.where(:parent_id => nil).count + 3
+          get :new, {}, valid_session
+          assigns(:character_sheet).abilities.should have(@count).abilities
+      end
+      
+      
+  end
 end

@@ -217,4 +217,17 @@ describe CharacterSheet, ".methods" do
       @characterSheet.total_armorclass.should eq(28)
   end
   
+  describe CharacterSheet, ".ablities" do
+      it "should have 3 abilities" do
+          @characterSheet.save
+          (0..2).each do |i|
+             skill = Skill.create(:name => "discretion" + i.to_s, :characteristic => "dexterity")
+             ability = Ability.create(:ranks => 5, :misc => 2)
+             @characterSheet.abilities << ability 
+             skill.abilities << ability
+          end
+          @characterSheet.abilities.count.should eq(3)
+      end
+  end
+  
 end

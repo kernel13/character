@@ -29,3 +29,12 @@ Swim::strengh::1 
 Tumble::dexterity::0 
 Use Magic Device::charisma::0 
 Use Rope::dexterity::1
+knowledge::intelligence::0
+arcana::intelligence::0::knowledge
+Architecture and engineering::intelligence::0::knowledge
+Dungeoneering::intelligence::0::knowledge
+History::intelligence::0::knowledge
+Local::intelligence::0::knowledge
+Nature::intelligence::0::knowledge
+Religion::intelligence::0::knowledge
+Psionics::intelligence::0::knowledge

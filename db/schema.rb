@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120825192425) do
+ActiveRecord::Schema.define(:version => 20120910144648) do
+
+  create_table "abilities", :force => true do |t|
+    t.integer  "character_sheet_id"
+    t.integer  "skill_id"
+    t.integer  "ranks"
+    t.integer  "misc"
+    t.boolean  "skill_class"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
 
   create_table "character_sheets", :force => true do |t|
     t.string   "name"
@@ -55,8 +65,23 @@ ActiveRecord::Schema.define(:version => 20120825192425) do
     t.integer  "flatfootedac"
     t.integer  "totalinit"
     t.integer  "miscinit"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.integer  "fortitudebasesavingthrow"
+    t.integer  "fortitudemagicsavingthrow"
+    t.integer  "fortitudemiscsavingthrow"
+    t.integer  "fortitudetempsavingthrow"
+    t.integer  "reflexbasesavingthrow"
+    t.integer  "reflexmagicsavingthrow"
+    t.integer  "reflexmiscsavingthrow"
+    t.integer  "reflextempsavingthrow"
+    t.integer  "willbasesavingthrow"
+    t.integer  "willmagicsavingthrow"
+    t.integer  "willmiscsavingthrow"
+    t.integer  "willtempsavingthrow"
+    t.integer  "base_attack"
+    t.integer  "spell_resist"
+    t.integer  "grapplemisc"
   end
 
   create_table "skills", :force => true do |t|
@@ -66,6 +91,9 @@ ActiveRecord::Schema.define(:version => 20120825192425) do
     t.integer  "synergy"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.integer  "parent_id"
   end
+
+  add_index "skills", ["parent_id"], :name => "index_skills_on_parent_id"
 
 end

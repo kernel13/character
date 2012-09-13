@@ -4,16 +4,16 @@
 
 <% content_for :body do %>
 
- <section id="characters">
-	<ul>
-		<%= render :partial => 'character', :collection => @character_sheets %>
-	</ul>
- </section>
-
- <section id="charactersheet">
-	<div id="content">
-		<%= render 'form'%>
+ <div id="container-fluid">
+	<div class="row-fluid">
+		<div class="span2">
+			<ul>
+				<%= render :partial => 'character', :collection => @character_sheets %>
+			</ul>
+		</div>
+ 		<div class=span10>
+			<%= render 'form'%>
+		</div>
 	</div>
- </section>
-
+ </div>
 <% end %>

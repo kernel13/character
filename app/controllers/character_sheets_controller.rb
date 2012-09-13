@@ -5,6 +5,7 @@ class CharacterSheetsController < ApplicationController
     @character_sheets = CharacterSheet.all
     @character_sheet = @character_sheets.first 
     @skills = Skill.all
+    @abilities = @character_sheet.abilities if @character_sheet
     
     respond_to do |format|
       format.html # index.html.erb
@@ -30,14 +31,23 @@ class CharacterSheetsController < ApplicationController
   def new
     @character_sheet = CharacterSheet.new
     @character_sheets = CharacterSheet.all
-    @skills = Skill.all
+    @skills = Skill.where(:parent_id => nil)
+
+    @skills.each do |skill| 
+       if skill.children?
+          4.times {|i| @character_sheet.abilities.build(:skill_id => skill.children[i].id) }           
+       else
+         @character_sheet.abilities.build(:skill_id => skill.id)
+       end
+       
+    end
     
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @character_sheet }
     end
   end
-
+  
   # GET /character_sheets/1/edit
   def edit
     @character_sheet = CharacterSheet.find(params[:id])

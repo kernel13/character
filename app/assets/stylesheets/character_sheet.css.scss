@@ -1,0 +1,100 @@
+@mixin CharacterSheetLabel {
+	background-color: black;
+	color: white;
+	text-align: center;	
+	small{ font-size: 7pt; }
+}
+
+@mixin reset_textfield_border{
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	 box-shadow: none;
+	 -webkit-transition: none;
+	 -moz-transition: none;
+	 -o-transition: none;
+	 transition: none;
+	 border-width: 0px;
+}
+	
+#character_sheet {
+	width: 960px;
+	border: solid 1px black;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: 8px 8px 5px #888888;;
+	-moz-box-shadow: 8px 8px 5px #888888;;
+	 box-shadow: 8px 8px 5px #888888;
+	padding: 5px;
+}
+
+#character_sheet_header
+{	
+ 	input[type="text"] { 
+	 @include reset_textfield_border;
+	 border-bottom: solid #000 1px;
+	 margin: 0;
+	}
+	
+	label { font-size: 0.8em; margin: 0px;}
+	
+	#txtClass{
+		width: 400px;
+	}
+}
+
+.CharacterSheetLabel{
+	@include CharacterSheetLabel;
+}
+
+#Hitpoints{
+	table { margin: 2px; padding: 0px; }
+	td { background-color: white; }
+	td.CharacterSheetLabel { @include CharacterSheetLabel; }
+	input { height: 30px; margin: 0px; }
+}
+
+#characteristics{
+	table { border-collapse: separate; border-spacing: 2px; }
+	td { margin: 0px; padding: 2px;  background-color: white; width: 30px; border: solid 1px black; text-align: center;  vertical-align: middle; line-height: 12px;}
+	th { font-size: 0.8em;  line-height: 13px;}
+	td.CharacterSheetLabel { @include CharacterSheetLabel; }
+	input[type="text"] { @include reset_textfield_border; width: 30px; text-align: center; }
+}
+
+#physical{
+	#total { input[type="text"] { width: 40px; } }
+	#nonelethal { input[type="text"] { width: 60px; } }
+}
+#speed { input[type="text"] { width: 80px; } }
+#ArmorClass, #initiative, #AcOther{ 
+	table { margin: 0px; padding: 0px; }
+	input{ width: 30px; height: 30px; margin: 0px; text-align: center; }
+ }
+
+#AcOther, #initiative{
+	table { margin: 2px; padding: 0px; }
+	font-size: 0.8em;
+	input { height: 30px; margin: 0; }
+	
+}
+
+#skills { 
+	input{ width: 25px; }
+	select { width: 50px; }
+	font-size: 0.7em;
+	td { margin: 0px; padding: 0px }
+	td.CharacterSheetLabel { @include CharacterSheetLabel; }
+}
+
+#SavingThrow{
+	table, td { border-width: 0px; }
+	td { margin: 0px; padding: 2px; }
+	th { font-size: 0.8em;  line-height: 13px;}
+	td.CharacterSheetLabel { @include CharacterSheetLabel; }
+	input[type="text"] { @include reset_textfield_border; width: 30px; text-align: center; }
+}
+
+#grapple{
+	input{ width: 30px; }
+}

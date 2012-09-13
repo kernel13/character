@@ -12,101 +12,108 @@
   	<% end %>
 
     <%= f.submit "Save" %>
- 	<div id="sheet">
-		<fieldset id="CharacterSheetHeader">
+ 
+ 	<div id="character_sheet" class="container">
+		<div id="character_sheet_header" class="span-18">
+		<div class="span-18">
   			  <!-------------------------------------------------------------------------------->
 			  <!--							GENERAL INFORMATION								-->
-			  <!-------------------------------------------------------------------------------->
-		      
-		      <%= image_tag 'title.png' %>
+			  <!-------------------------------------------------------------------------------->		
 
 		      <!-- Character name -->
-		      <div class="CharacterInformation">	
-				  <%= f.text_field :name, :id => 'txtCharacterName'  -%><br />
+		      <div class="span-5">	
+				  <%= f.text_field :name, :id => 'txtCharacterName' -%>
 				  <%= f.label :name, t('character_sheet.name') -%>
 		      </div>
 
 		      <!-- Classe and level -->
-		      <div class="CharacterInformation">
-		          <input name="txtClass" type="text" id="txtClass" /> <br  />
+		      <div class="span-11" >
+		          <input name="txtClass" type="text" id="txtClass" /> 
 		          <label id="lblClasse">Classe et niveau</label>
-		      </div>
-
-		      <br class="Clear" />
-
+		      </div>		
+		</div>
+		
+		<div class="span-18">
 		      <!-- Race du personnage -->
-		      <div class="CharacterInformation">
-				  <%= f.text_field :race  -%><br />
+		      <div class="span-2">
+				  <%= f.text_field :race, :class => "input-medium"  -%>
 				  <%= f.label :race, t('character_sheet.race') -%> 
 		      </div>
 
 		      <!-- Alignement -->
-		      <div class="CharacterInformation">
-		          <%= f.text_field :alignment  -%><br />
+		      <div class="span-2">
+		          <%= f.text_field :alignment, :class => "input-mini"  -%>
 				  <%= f.label :alignment, t('character_sheet.alignment') -%>
 		      </div>
 
 		      <!-- Deity -->
-		      <div class="CharacterInformation">    
-		          <%= f.text_field :deity  -%><br />
+		      <div class="span-2">    
+		          <%= f.text_field :deity ,  :class => "input-medium" -%>
 				  <%= f.label :deity, t('character_sheet.deity') -%>
 		      </div>
 
 		      <!-- Sex -->
-		      <div class="CharacterInformation">
-		         <%= f.text_field :gender  -%><br />
+		      <div class="span-2">
+		         <%= f.text_field :gender, :class => "input-mini"   -%>
 				  <%= f.label :gender, t('character_sheet.gender') -%>
 		      </div>
-
-		      <!-- Size -->
-		      <div class="CharacterInformation">    
-		          <%= f.text_field :height  -%><br />
+		
+			<!-- Size -->
+		      <div class="span-2">    
+		          <%= f.text_field :height, :class => "input-mini"  -%>
 				  <%= f.label :height, t('character_sheet.height') -%>
 			  </div>
 			
 			  <!-- master -->
-		      <div class="CharacterInformation">    
-		          <%= f.text_field :master  -%><br />
+		      <div class="span-3">    
+		          <%= f.text_field :master, :class => "input-large"  -%>
 				  <%= f.label :master, t('character_sheet.master') -%>
 			  </div>
-			
-			  <!-- Age -->
-		      <div class="CharacterInformation">    
-		          <%= f.text_field :age  -%><br />
+		</div>
+		
+		<div class="span-18">
+			<!-- Age -->
+		      <div class="span-4">    
+		          <%= f.text_field :age, :class => "input-mini" -%>
 				  <%= f.label :age, t('character_sheet.age') -%>
 			  </div>
 			
 			  <!-- eyes -->
-		      <div class="CharacterInformation">    
-		          <%= f.text_field :eyes  -%><br />
+		      <div class="span-4">    
+		          <%= f.text_field :eyes, :class => "input-medium" -%>
 				  <%= f.label :eyes, t('character_sheet.eyes') -%>
 			  </div>
-			
+
 			  <!-- hair -->
-		      <div class="CharacterInformation">    
-		          <%= f.text_field :hair  -%><br />
+		      <div class="span-4">    
+		          <%= f.text_field :hair, :class => "input-medium"  -%>
 				  <%= f.label :hair, t('character_sheet.hair') -%>
 			  </div>
-			
+
 			  <!-- skin -->
-		      <div class="CharacterInformation">    
-		          <%= f.text_field :skin  -%><br />
+		      <div class="span-4">    
+		          <%= f.text_field :skin, :class => "input-medium"  -%>
 				  <%= f.label :skin, t('character_sheet.skin') -%>
 			  </div>
-			
-		</fieldset> <!-- CharacterSheetHeader -->
-	
+				
+		</div>
+		
+		</div> <!-- end of character sheet header -->
+			 
+	    <%= image_tag 'title.png', :class => "span-6" %>	
+		
+
 		<!-------------------------------------------------------------------------------->
 	    <!--								Characteristics								-->
 	    <!-------------------------------------------------------------------------------->
-	    <fieldset id="fstCharacteristics">
+	    <div id="characteristics" class="span-7">
 	    	<%= render 'characteristics', :f => f %>
-	    </fieldset>
-	
+	    </div>
+		
 		<!-------------------------------------------------------------------------------->
 	    <!--								Hit Points									-->
 	    <!-------------------------------------------------------------------------------->
-	   <fieldset id="fstHitpoints">
+	   <div id="Hitpoints" class="span-13">
 			<table>
 			<tr>
 				<th></th>
@@ -115,27 +122,27 @@
 				<th><%= t('character_sheet.nonelethal').html_safe %></th>
 			</tr>
 			<tr>
-			<td class="label"><%= t('character_sheet.hitpoints').html_safe %></td>
+			<td class="CharacterSheetLabel"><%= t('character_sheet.hitpoints').html_safe %></td>
 			<td id="total"><%= f.text_field :totalhp  -%></td>
-			<td id="wounds"><%= f.text_field :wounds  -%></td>
+			<td id="wounds"><%= f.text_field :wounds -%></td>
 			<td id="nonelethal"><%= f.text_field :nonelethal  -%></td>
 			</tr>
 			</table>
-	   </fieldset>
-		
-		<fieldset id="fstSpeed">
+	   </div>
+
+		<div id="speed" class="span-3">
 			<p><%= t('character_sheet.speed').html_safe %></p>
 			<%= f.text_field :speed  -%>
-		</fieldset>
-		
+		</div>
+
 		<!-------------------------------------------------------------------------------->
 	    <!--								Armor Class									-->
 	    <!-------------------------------------------------------------------------------->
-	   <fieldset id="fstArmorClass">
+	   <div id="ArmorClass" class="span-16">
 			<table>			
 			<tr>
-			<td class="label"><%= t('character_sheet.armorclass').html_safe %></td>
-			<td class="modifier"><%=raw @character_sheet.total_armorclass  -%></td>
+			<td class="CharacterSheetLabel"><%= t('character_sheet.armorclass').html_safe %></td>
+			<td class="modifier"><%= f.text_field :total_armorclass, :readonly => true  -%></td>
 			<td id="armorbonus">= 10 + <%= f.text_field :armorbonus  -%> + </td>
 			<td id="shieldbonus"><%= f.text_field :shieldbonus  -%> + </td>
 			<td class="modifier" id="dextmodifier"><%= @character_sheet.dexterity_bonus -%></td>
@@ -156,60 +163,121 @@
 				<th><%= f.label :miscmodifier, t('character_sheet.miscmodifier').html_safe -%></th>				
 			</tr>
 			</table>
-			
-			<div id="tac">
-				<span class="label"><%= t('character_sheet.touchac').html_safe -%></span>
-				<%= f.text_field :touchac  -%> 
+		</div>	
+		
+		<div class="span-15 last">
+			<div id="AcOther" class="span-7">
+				<table>
+					<tr>
+					<td class="CharacterSheetLabel"><%= t('character_sheet.touchac').html_safe -%></td>	
+					<td><%= f.text_field :touchac  -%></td>
+					<td class="CharacterSheetLabel"><%= t('character_sheet.flatfootedac').html_safe -%></td>
+					<td><%= f.text_field :flatfootedac  -%></td>
+					</tr> 
+				</table>	
 			</div>
 
-			<div id="ffac">
-				<span class="label"><%= t('character_sheet.flatfootedac').html_safe -%></span>
-				<%= f.text_field :flatfootedac  -%> 
-			</div>
-				
-	   </fieldset>
-
-		<!-------------------------------------------------------------------------------->
-	    <!--								Initiative									-->
-	    <!-------------------------------------------------------------------------------->	
-		<fieldset id="fstInitiative"> 
-			<table>
-			<tr>
-				<td><span class="label"><%= t('character_sheet.initiative').html_safe -%></span></td>
-				<td><%= f.text_field :totalinit  -%> = </td>
-				<td class="modifier"><%= @character_sheet.dexterity_bonus -%></td>
-				<td> + 	<%= f.text_field :miscinit -%></td>
-			</tr>
-			<tr>
-				<th></th>
-				<th><%= t('character_sheet.totalinit').html_safe %></th>
-				<th><%= t('character_sheet.dextmodifier').html_safe %></th>
-				<th><%= t('character_sheet.miscinit').html_safe %></th>
-			</tr>
-			</table>
-		</fieldset>
-		
-		<!-------------------------------------------------------------------------------->
-	    <!--									Skills									-->
-	    <!-------------------------------------------------------------------------------->
-		
-		<fieldset id="skills">
-			<table>
-				<tr id="skillheader"><td colspan="7">skills</td></tr>
+			<div id="initiative" class="span-7">
+				<table>
 				<tr>
-					<td id="skillclass"></td>
-					<td id="skillname"><%= t('character_sheet.skillname').html_safe %></td>
-					<td id="skillkeyability"><%= t('character_sheet.skillkeyability').html_safe %></td>
-					<td id="skillmodifier"><%= t('character_sheet.skillmodifier').html_safe %></td>
-					<td id="skillabilitymodifier"><%= t('character_sheet.skillabilitymodifier').html_safe %></td>
-					<td id="skillranks"><%= t('character_sheet.skillranks').html_safe %></td>
-					<td id="skillmisc"><%= t('character_sheet.skillmisc').html_safe %></td>
+					<td class="CharacterSheetLabel"><%= t('character_sheet.initiative').html_safe -%></td>
+					<td><%= f.text_field :initiative, :readonly => true  -%> = </td>
+					<td class="modifier"><%= @character_sheet.dexterity_bonus -%></td>
+					<td> + 	<%= f.text_field :miscinit -%></td>
 				</tr>
-				
-				<%= render @skills, :f => f %>
-				
-			</table>
-		</fieldset>
+				<tr>
+					<th></th>
+					<th><%= t('character_sheet.totalinit').html_safe %></th>
+					<th><%= t('character_sheet.dextmodifier').html_safe %></th>
+					<th><%= t('character_sheet.miscinit').html_safe %></th>
+				</tr>
+				</table>			
+			</div>
+		</div>
 		
-	</div> <!-- Sheet --> 
+		<div class="span-24">
+
+			<div class="span-13">
+				<div id="SavingThrow" class="span-13 last">
+			    	<%= render 'savingthrow', :f => f %>
+				</div>
+				
+				<div id="baseAttack" class="span-13 last">
+					<table>
+						<tr>
+						<td class="CharacterSheetLabel"><%= t('character_sheet.baseattack').html_safe -%></td>	
+						<td><%= f.text_field :base_attack  -%></td>
+						<td class="CharacterSheetLabel"><%= t('character_sheet.spellresist').html_safe -%></td>
+						<td><%= f.text_field :spell_resist  -%></td> 
+						</tr>
+					</table>
+				</div>
+				
+				<div id="grapple" class="span-13 last">
+					<table>
+						<tr>
+							<td class="CharacterSheetLabel"><%= t('character_sheet.grapple.label').html_safe -%></td>	
+							<td><%= f.text_field :totalgrapple  -%></td>
+							<td><%= f.text_field :strength_bonus, :readonly => true  -%></td>	
+							<td><%= f.text_field :base_attack  -%></td>
+							<td><%= f.text_field :sizemodifier  -%></td>
+					    	<td><%= f.text_field :grapplemisc  -%></td>	
+						</tr>
+						<tr>
+							<th></th>
+							<th><%= t('character_sheet.grapple.total').html_safe %></th>
+							<th><%= t('character_sheet.grapple.strengthmodifier').html_safe %></th>
+							<th><%= t('character_sheet.grapple.baseattack').html_safe %></th>
+							<th><%= t('character_sheet.grapple.sizemodifier').html_safe %></th>
+							<th><%= t('character_sheet.grapple.miscmodifier').html_safe %></th>
+
+						</tr>
+					</table>
+				</div>
+			</div>
+
+			<!-------------------------------------------------------------------------------->
+		    <!--									Skills									-->
+		    <!-------------------------------------------------------------------------------->
+
+			<div id="skills" class="span-11 last">
+				<table>
+					<tr id="skillheader"><td colspan="7" class="CharacterSheetLabel">skills</td></tr>
+					<tr>
+						<td id="skillclass" class="CharacterSheetLabel"></td>
+						<td id="skillname" class="CharacterSheetLabel"><%= t('character_sheet.skillname').html_safe %></td>
+						<td id="skillkeyability" class="CharacterSheetLabel"><%= t('character_sheet.skillkeyability').html_safe %></td>
+						<td id="skillmodifier" class="CharacterSheetLabel"><%= t('character_sheet.skillmodifier').html_safe %></td>
+						<td id="skillabilitymodifier" class="CharacterSheetLabel"><%= t('character_sheet.skillabilitymodifier').html_safe %></td>
+						<td id="skillranks" class="CharacterSheetLabel"><%= t('character_sheet.skillranks').html_safe %></td>
+						<td id="skillmisc" class="CharacterSheetLabel"><%= t('character_sheet.skillmisc').html_safe %></td>
+					</tr>				
+
+					<%=	f.fields_for :abilities do |ability_form| %>	
+						<tr>
+							<td class="skillclass"><%= ability_form.check_box :skill_class %></td>
+							<td class="skillname">
+								<% if ability_form.object.children? %>
+									<%= ability_form.label ability_form.object.name[0..3] -%></span>
+									<%= ability_form.select(:skill_id, ability_form.object.children)  -%>
+								<% elsif ability_form.object.skill.parent %>
+								   <%= ability_form.label ability_form.object.skill.parent.name[0..3] -%></span>
+								   <%= ability_form.select(:skill_id, ability_form.object.parent_children)  -%>
+								<% else %>
+									<%= ability_form.label ability_form.object.name -%></span>
+									<%= ability_form.hidden_field :skill_id %>
+								<% end %>
+							</td>
+							<td class="skillkeyability"><%= ability_form.text_field :characteristic_short, :readonly => true %></td>
+							<td class="skillmodifier"><%= ability_form.text_field :skill_modifier, :readonly => true %></td>
+							<td class="skillabilitymodifier"> = <%= ability_form.text_field :bonus, :readonly => true  %></td>
+							<td class="skillranks">+ <%= ability_form.text_field :ranks %> + </td>
+							<td class="skillmisc"><%= ability_form.text_field :misc %></td>
+						</tr>
+					<% end %>
+				</table>
+			</div>
+		</div>
+
+	</div> <!-- container --> 
 <% end %>

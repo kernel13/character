@@ -1,5 +1,9 @@
 Character::Application.routes.draw do
-  resources :character_sheets
+  
+  resources :character_sheets do
+     resources :abilities
+  end
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

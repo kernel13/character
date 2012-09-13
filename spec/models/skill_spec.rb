@@ -14,7 +14,6 @@ describe Skill do
         @skill = Skill.new
     end
     
-    
     it "must have a name" do
         @skill.should have(1).error_on(:name)
     end
@@ -32,4 +31,14 @@ describe Skill do
       @skill.attributes= valid_attributes
       @skill.should have(0).error_on(:characteristic)
     end
+    
+    it "should have 3 abilities" do
+        @skill.attributes= valid_attributes
+        @skill.save
+        (0..2).each {|i| @skill.abilities.create(:ranks => i)  }
+        @skill.abilities.count.should eq(3)    
+    end
+    
+    
+    
 end
