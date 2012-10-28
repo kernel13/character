@@ -1,9 +1,11 @@
 Character::Application.routes.draw do
-  
+
+  match "/character_sheets/dexterity_update" => "character_sheets#dexterity_update"
+    
   resources :character_sheets do
-     resources :abilities
+     #resources :abilities
   end
-  
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

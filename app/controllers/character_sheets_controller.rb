@@ -18,11 +18,17 @@ class CharacterSheetsController < ApplicationController
   def show
     @character_sheet = CharacterSheet.find(params[:id])
     @character_sheets = CharacterSheet.all
-    @skills = Skill.all
+    
     
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @character_sheet }
+      format.pdf do
+          pdf = Sheet.new(@character_sheet, view_context)
+          send_data pdf.render, filename: "character_sheet_#{ @character_sheet.name}.pdf",
+                                type: "application/pdf",
+                                disposition: "inline"                                                                                   
+      end
     end
   end
 
@@ -35,12 +41,32 @@ class CharacterSheetsController < ApplicationController
 
     @skills.each do |skill| 
        if skill.children?
-          4.times {|i| @character_sheet.abilities.build(:skill_id => skill.children[i].id) }           
+          4.times {|i| @character_sheet.abilities.build(skill_id: skill.children[i].id) }           
        else
-         @character_sheet.abilities.build(:skill_id => skill.id)
-       end
-       
+         @character_sheet.abilities.build(skill_id: skill.id)
+       end       
     end
+    
+    # weapon
+    4.times {|i| @character_sheet.weapons.build }
+    
+    # gears
+    %w(armor shield other other).each {|category| @character_sheet.gears.build(category: category) }
+    
+    # possesions
+    32.times { @character_sheet.possessions.build }
+    
+    # feats
+    12.times { @character_sheet.feats.build }
+    
+    #special abilities
+    18.times { @character_sheet.special_abilities.build }
+    
+    # Languages
+    7.times { @character_sheet.languages.build }
+    
+    #spells
+    10.times {|level| @character_sheet.spells.build(level: level)  }
     
     respond_to do |format|
       format.html # new.html.erb
@@ -96,4 +122,27 @@ class CharacterSheetsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def dexterity_update 
+     @character_sheet = CharacterSheet.find(params[:id])
+     @dexterity = params[:dexterity]
+     
+     @character_sheet.dexterity = @dexterity 
+     
+     respond_to do |format|
+        format.js
+     end
+  end
+  
+  def strength_update 
+      @character_sheet = CharacterSheet.find(params[:id])
+      @strength = params[:strength]
+
+      @character_sheet.strength = @strength 
+
+      respond_to do |format|
+         format.js
+      end
+   end
+  
 end

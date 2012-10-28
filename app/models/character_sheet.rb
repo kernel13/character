@@ -3,7 +3,22 @@ class CharacterSheet < ActiveRecord::Base
     #relationship
     has_many :abilities, :dependent => :destroy
     has_many :skills, :through => :abilities
+    has_many :weapons, :dependent => :destroy
+    has_many :gears, :dependent => :destroy
+    has_many :possessions, :dependent => :destroy
+    has_many :feats, :dependent => :destroy
+    has_many :special_abilities, :dependent => :destroy
+    has_many :languages, :dependent => :destroy
+    has_many :spells, :dependent => :destroy
+    
     accepts_nested_attributes_for :abilities
+    accepts_nested_attributes_for :weapons
+    accepts_nested_attributes_for :gears
+    accepts_nested_attributes_for :possessions
+    accepts_nested_attributes_for :feats
+    accepts_nested_attributes_for :special_abilities
+    accepts_nested_attributes_for :languages
+    accepts_nested_attributes_for :spells
     
     # => Validation
     validates :name, :presence => true
@@ -26,6 +41,9 @@ class CharacterSheet < ActiveRecord::Base
     attr_accessor :total_armorclass, :initiative
     attr_accessor :fortitudeTotalSavingThrow, :reflexTotalSavingThrow, :willTotalSavingThrow
     attr_accessor :strength_bonus, :dexterity_bonus, :constitution_bonus, :wisdom_bonus, :intelligence_bonus, :charisma_bonus
+    attr_accessor :totalgrapple
+    attr_accessor :current_strength_bonus, :current_dexterity_bonus, :current_constitution_bonus, :current_intelligence_bonus, :current_wisdom_bonus, :current_charisma_bonus
+    attr_accessor :current_tempstrength_bonus, :current_tempdexterity_bonus, :current_tempconstitution_bonus, :current_tempintelligence_bonus, :current_tempwisdom_bonus, :current_tempcharisma_bonus
     
     def strength_bonus
         modifier = self.temporarystrength || self.strength
@@ -65,6 +83,56 @@ class CharacterSheet < ActiveRecord::Base
         characteristic_bonus(self.send(characteristic))
     end
     
+    def current_strength_bonus
+      self.characteristic_bonus(self.strength)
+    end
+    
+    def current_dexterity_bonus
+      self.characteristic_bonus(self.dexterity)
+    end
+    
+    def current_constitution_bonus
+      self.characteristic_bonus(self.constitution)
+    end
+    
+    def current_wisdom_bonus
+      self.characteristic_bonus(self.wisdom)
+    end
+    
+    def current_intelligence_bonus
+      self.characteristic_bonus(self.intelligence)
+    end
+    
+    def current_charisma_bonus
+      self.characteristic_bonus(self.charisma)
+    end
+    
+    def current_tempstrength_bonus
+      self.characteristic_bonus(self.temporarystrength)
+    end
+
+    def current_tempdexterity_bonus
+      self.characteristic_bonus(self.temporarydexterity)
+    end
+
+    def current_tempconstitution_bonus
+      self.characteristic_bonus(self.temporaryconstitution)
+    end
+
+    def current_tempwisdom_bonus
+      self.characteristic_bonus(self.temporarywisdom)
+    end
+
+    def current_tempintelligence_bonus
+      self.characteristic_bonus(self.temporaryintelligence)
+    end
+
+    def current_tempcharisma_bonus
+      self.characteristic_bonus(self.temporarycharisma)
+    end
+
+    
+    
     def  total_armorclass
       10 + self.armorbonus.to_i + self.shieldbonus.to_i + dexterity_bonus.to_i + self.sizemodifier.to_i + self.naturalarmor.to_i + self.deflectionmodifier.to_i + self.miscmodifier.to_i
     end
@@ -80,18 +148,23 @@ class CharacterSheet < ActiveRecord::Base
     end
     
     def reflexTotalSavingThrow
-      self.reflexbasesavingthrow.to_i + constitution_bonus.to_i + 
+      self.reflexbasesavingthrow.to_i + dexterity_bonus.to_i + 
         self.reflexmagicsavingthrow.to_i + self.reflexmiscsavingthrow.to_i + 
         self.reflextempsavingthrow.to_i
     end
     
      def willTotalSavingThrow
-        self.willbasesavingthrow.to_i + constitution_bonus.to_i + 
+        self.willbasesavingthrow.to_i + wisdom_bonus.to_i + 
           self.willmagicsavingthrow.to_i + self.willmiscsavingthrow.to_i + 
           self.willtempsavingthrow.to_i
      end
      
-     def totalgrapple
-        strength_bonus.to_i + self.base_attack.to_i + self.sizemodifier.to_i + self.grapplemisc.to_i
+     def totalgrapple    
+        baseAttack = attacks ? attacks[0].to_i : 0
+        strength_bonus.to_i + baseAttack + self.sizemodifier.to_i + self.grapplemisc.to_i
+     end
+     
+     def attacks
+          self.base_attack.split('/') if self.base_attack
      end
 end

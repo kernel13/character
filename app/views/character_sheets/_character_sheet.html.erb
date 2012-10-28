@@ -1,19 +1,17 @@
 <% content_for :header do %>
-  <%= character_sheet.name %>
+  <%# character_sheet.name %>
 <% end %>
 
 <% content_for :body do %>
 
- <div id="container-fluid">
-	<div class="row-fluid">
-		<div class="span2">
-			<ul>
-				<%= render :partial => 'character', :collection => @character_sheets %>
-			</ul>
-		</div>
- 		<div class=span10>
-			<%= render 'form'%>
-		</div>
+ <div id="container">
+	<div id="characters" class="span-4">
+		<ul>
+			<%= render :partial => 'character', :collection => @character_sheets %>
+		</ul>
+	</div>
+	<div class="span-20 last">
+		<%= render 'form'%>
 	</div>
  </div>
 <% end %>

@@ -1,0 +1,22 @@
+//Dexterity modifier
+$("#dexteritymodifier").val(<%= @character_sheet.characteristic_bonus(@dexterity) %>);
+
+// Armor Class
+$("#dextmodifierinput").val(<%= @character_sheet.dexterity_bonus %>);
+$("#total_ac").val(<%= @character_sheet.total_armorclass %>);
+
+// Initiative
+$("#init_dext_modifier").val(<%= @character_sheet.dexterity_bonus %>);
+$("#init_total").val(<%= @character_sheet.initiative %>);
+
+// Reflex saving trow
+$("#relfex_dext").val(<%= @character_sheet.dexterity_bonus %>);
+$("#reflex_total").val(<%= @character_sheet.reflexTotalSavingThrow %>);
+
+// Skills
+<% @character_sheet.abilities.each_with_index do |ability, index| %>
+<% if ability.characteristic == "dexterity" && ability.ranks != nil %>    
+	$("#character_sheet_abilities_attributes_<%= index -%>_bonus").val(<%= @character_sheet.dexterity_bonus -%>);  
+	$("#character_sheet_abilities_attributes_<%= index -%>_skill_modifier").val(<%= ability.ranks.to_i + ability.misc.to_i + @character_sheet.dexterity_bonus -%>);  
+<% end %>
+<% end %>

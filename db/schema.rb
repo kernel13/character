@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120910144648) do
+ActiveRecord::Schema.define(:version => 20121018175310) do
 
   create_table "abilities", :force => true do |t|
     t.integer  "character_sheet_id"
@@ -79,9 +79,74 @@ ActiveRecord::Schema.define(:version => 20120910144648) do
     t.integer  "willmagicsavingthrow"
     t.integer  "willmiscsavingthrow"
     t.integer  "willtempsavingthrow"
-    t.integer  "base_attack"
     t.integer  "spell_resist"
     t.integer  "grapplemisc"
+    t.string   "campaign"
+    t.integer  "experience"
+    t.integer  "light_load"
+    t.integer  "medium_load"
+    t.integer  "heavy_load"
+    t.integer  "lift_over_head"
+    t.integer  "lift_off_ground"
+    t.integer  "push_or_drag"
+    t.integer  "total_load"
+    t.text     "money"
+    t.string   "classes"
+    t.string   "base_attack"
+    t.string   "divine_domain_name1"
+    t.string   "divine_granted_power1"
+    t.string   "divine_domain_name2"
+    t.string   "divine_granted_power2"
+    t.string   "arcane_speciality_school"
+    t.string   "arcane_prohibited_school1"
+    t.string   "arcane_prohibited_school2"
+    t.string   "arcane_spell_failure"
+    t.integer  "psi_powers_known"
+    t.integer  "psi_max_level"
+    t.string   "psi_primary_dicipline"
+    t.integer  "psi_power_points_per_day"
+    t.integer  "turn_undead_times_per_day"
+    t.integer  "turn_undead_check"
+    t.integer  "turn_undead_damage"
+    t.text     "notes"
+  end
+
+  create_table "feats", :force => true do |t|
+    t.string   "name"
+    t.integer  "character_sheet_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  create_table "gears", :force => true do |t|
+    t.string   "protective_item"
+    t.string   "type"
+    t.integer  "ac_bonus"
+    t.integer  "max_dex"
+    t.integer  "check_penalty"
+    t.integer  "spell_failure"
+    t.integer  "speed"
+    t.integer  "weight"
+    t.string   "special_properties"
+    t.string   "category"
+    t.integer  "character_sheet_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  create_table "languages", :force => true do |t|
+    t.string   "name"
+    t.integer  "character_sheet_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  create_table "possessions", :force => true do |t|
+    t.string   "item"
+    t.integer  "weight"
+    t.integer  "character_sheet_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   create_table "skills", :force => true do |t|
@@ -95,5 +160,36 @@ ActiveRecord::Schema.define(:version => 20120910144648) do
   end
 
   add_index "skills", ["parent_id"], :name => "index_skills_on_parent_id"
+
+  create_table "special_abilities", :force => true do |t|
+    t.string   "name"
+    t.integer  "character_sheet_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  create_table "spells", :force => true do |t|
+    t.integer  "spells_known"
+    t.integer  "spell_save"
+    t.integer  "level"
+    t.integer  "spells_per_day"
+    t.integer  "bonus_spells"
+    t.integer  "character_sheet_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  create_table "weapons", :force => true do |t|
+    t.string   "attack"
+    t.integer  "bonus"
+    t.string   "dammage"
+    t.string   "critical"
+    t.string   "range"
+    t.string   "weapon_type"
+    t.string   "notes"
+    t.integer  "character_sheet_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
 
 end

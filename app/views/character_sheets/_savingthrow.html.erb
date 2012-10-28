@@ -1,39 +1,59 @@
                 
-<table>
+<table class="no-zebra">
 	<tr>
-		<td><%= t('character_sheet.savingthrouw').html_safe %></td>
-		<td><%= t('character_sheet.totalsavingthrouw').html_safe %></td>
-		<td><%= t('character_sheet.basesavingthrouw').html_safe %></td>
-		<td><%= t('character_sheet.ability_name').html_safe %></td>
-		<td><%= t('character_sheet.magicsavingthrouw').html_safe %></td>
-		<td><%= t('character_sheet.miscsavingthrouw').html_safe %></td>
-		<td><%= t('character_sheet.tempsavingthrouw').html_safe %></td>						
+		<th><%= t('character_sheet.savingthrouw').html_safe %></th>
+		<th><%= t('character_sheet.totalsavingthrouw').html_safe %></th>
+		<th></th>	
+		<th><%= t('character_sheet.basesavingthrouw').html_safe %></th>
+		<th></th>
+		<th><%= t('character_sheet.ability_name').html_safe %></th>
+		<th></th>
+		<th><%= t('character_sheet.magicsavingthrouw').html_safe %></th>
+		<th></th>
+		<th><%= t('character_sheet.miscsavingthrouw').html_safe %></th>
+		<th></th>
+		<th><%= t('character_sheet.tempsavingthrouw').html_safe %></th>						
 	</tr>
 	<tr>
-		<td><%= t('character_sheet.fortitudelabel').html_safe %></td>
+		<td class="CharacterSheetLabel"><%= t('character_sheet.fortitudelabel').html_safe %></td>
 		<td><%= f.text_field :fortitudeTotalSavingThrow, :readonly => true  -%></td>
+		<td class="addition">=</td>
 		<td><%= f.text_field :fortitudebasesavingthrow  -%></td>
+		<td class="addition">+</td>
 		<td><%= f.text_field :constitution_bonus, :readonly => true  -%></td>
+		<td class="addition">+</td>
 		<td><%= f.text_field :fortitudemagicsavingthrow  -%></td>
+		<td class="addition">+</td>
 		<td><%= f.text_field :fortitudemiscsavingthrow  -%></td>
+		<td class="addition">+</td>
 		<td><%= f.text_field :fortitudetempsavingthrow  -%></td>
 	</tr>
 	<tr>
-		<td><%= t('character_sheet.reflexlabel').html_safe %></td>
-		<td><%= f.text_field :reflexTotalSavingThrow, :readonly => true  -%></td>
+		<td class="CharacterSheetLabel"><%= t('character_sheet.reflexlabel').html_safe %></td>
+		<td><%= f.text_field :reflexTotalSavingThrow, :readonly => true, :id => "reflex_total"  -%></td>
+		<td class="addition">=</td>		
 		<td><%= f.text_field :reflexbasesavingthrow  -%></td>
-		<td><%= f.text_field :dexterity_bonus, :readonly => true  -%></td>
+		<td class="addition">+</td>
+		<td><%= f.text_field :dexterity_bonus, :readonly => true, :id => "relfex_dext"  -%></td>
+		<td class="addition">+</td>
 		<td><%= f.text_field :reflexmagicsavingthrow  -%></td>
+		<td class="addition">+</td>
 		<td><%= f.text_field :reflexmagicsavingthrow  -%></td>
+		<td class="addition">+</td>
 		<td><%= f.text_field :reflexmiscsavingthrow  -%></td>
 	</tr>
 	<tr>
-		<td><%= t('character_sheet.willlabel').html_safe %></td>
+		<td class="CharacterSheetLabel"><%= t('character_sheet.willlabel').html_safe %></td>
 		<td><%= f.text_field :willTotalSavingThrow, :readonly => true  -%></td>
+		<td class="addition">=</td>		
 		<td><%= f.text_field :willbasesavingthrow  -%></td>
+		<td class="addition">+</td>
 		<td><%= f.text_field :wisdom_bonus, :readonly => true  -%></td>
+		<td class="addition">+</td>
 		<td><%= f.text_field :willmagicsavingthrow  -%></td>
+		<td class="addition">+</td>
 		<td><%= f.text_field :willmagicsavingthrow  -%></td>
+		<td class="addition">+</td>
 		<td><%= f.text_field :willmiscsavingthrow  -%></td>
 	</tr>
 </table>

@@ -1,0 +1,42 @@
+<table class="no-zebra">			
+<tr>
+<td class="CharacterSheetLabel"><%= t('character_sheet.armorclass').html_safe %></td>
+<td class="modifier"><%= f.text_field :total_armorclass, :readonly => true, id: "total_ac"  -%></td>
+<td class="addition">=</td>
+<td class="addition">10</td>
+<td class="addition">+</td>
+<td id="armorbonus"><%= f.text_field :armorbonus  -%></td>
+<td class="addition">+</td>
+<td id="shieldbonus"><%= f.text_field :shieldbonus  -%></td>
+<td class="addition">+</td>
+<td class="modifier" id="dextmodifier"><%= f.text_field :dexterity_bonus, :readonly => true, :id => "dextmodifierinput"  -%></td>
+<td class="addition">+</td>
+<td id="sizemodifier"><%= f.text_field :sizemodifier  -%></td>
+<td class="addition">+</td>
+<td id="naturalarmor"><%= f.text_field :naturalarmor  -%></td>
+<td class="addition">+</td>
+<td id="deflectionmodifier"><%= f.text_field :deflectionmodifier  -%></td>
+<td class="addition">+</td>
+<td id="miscmodifier"><%= f.text_field :miscmodifier  -%></td>
+</tr>
+<tr>
+	<th></th>
+	<th><%= f.label :totalac, t('character_sheet.totalac').html_safe -%></th>
+	<th></th>
+	<th></th>
+	<th></th>
+	<th><%= f.label :armorbonus, t('character_sheet.armorbonus').html_safe -%></th>
+	<th></th>
+	<th><%= f.label :shieldbonus, t('character_sheet.shieldbonus').html_safe -%></th>
+	<th></th>
+	<th><%= t('character_sheet.dextmodifier').html_safe -%></th>
+	<th></th>
+	<th><%= f.label :sizemodifier, t('character_sheet.sizemodifier').html_safe -%></th>
+	<th></th>
+	<th><%= f.label :naturalarmor, t('character_sheet.naturalarmor').html_safe -%></th>				
+	<th></th>
+	<th><%= f.label :deflectionmodifier, t('character_sheet.deflectionmodifier').html_safe -%></th>			
+	<th></th>
+	<th><%= f.label :miscmodifier, t('character_sheet.miscmodifier').html_safe -%></th>				
+</tr>
+</table>
