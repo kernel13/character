@@ -1,0 +1,28 @@
+//Strength modifier
+<% if params[:strength] %>
+	$("#strengthmodifierbonus").val(<%= @character_sheet.characteristic_bonus(@strength) %>);
+	
+	if($("#temporarystrengthmodifier").val() == "")
+	{
+		UpdateForce();
+	}
+	
+<% else %>
+	$("#temporarystrengthmodifierbonus").val(<%= @character_sheet.characteristic_bonus(@strength) %>);
+	UpdateForce();
+<% end %>
+
+function UpdateForce()
+{
+	//Grapple
+	$("#totalgrapple").val(<%= @character_sheet.totalgrapple %>);
+	$("#grapple_strengthbonus").val(<%= @character_sheet.strength_bonus %>);
+
+	// Skills
+	<% @character_sheet.abilities.each_with_index do |ability, index| %>
+	<% if ability.characteristic == "strength" && ability.ranks != nil %>    
+		$("#character_sheet_abilities_attributes_<%= index -%>_bonus").val(<%= @character_sheet.strength_bonus -%>);  
+		$("#character_sheet_abilities_attributes_<%= index -%>_skill_modifier").val(<%= ability.ranks.to_i + ability.misc.to_i + @character_sheet.strength_bonus -%>);  
+	<% end %>
+	<% end %>
+}

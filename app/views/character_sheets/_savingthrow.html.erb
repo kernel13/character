@@ -16,11 +16,11 @@
 	</tr>
 	<tr>
 		<td class="CharacterSheetLabel"><%= t('character_sheet.fortitudelabel').html_safe %></td>
-		<td><%= f.text_field :fortitudeTotalSavingThrow, :readonly => true  -%></td>
+		<td><%= f.text_field :fortitudeTotalSavingThrow, :readonly => true, :id => "fortitude_total"  -%></td>
 		<td class="addition">=</td>
 		<td><%= f.text_field :fortitudebasesavingthrow  -%></td>
 		<td class="addition">+</td>
-		<td><%= f.text_field :constitution_bonus, :readonly => true  -%></td>
+		<td><%= f.text_field :constitution_bonus, :readonly => true, :id => "fortitude_constit"  -%></td>
 		<td class="addition">+</td>
 		<td><%= f.text_field :fortitudemagicsavingthrow  -%></td>
 		<td class="addition">+</td>
@@ -44,11 +44,11 @@
 	</tr>
 	<tr>
 		<td class="CharacterSheetLabel"><%= t('character_sheet.willlabel').html_safe %></td>
-		<td><%= f.text_field :willTotalSavingThrow, :readonly => true  -%></td>
+		<td><%= f.text_field :willTotalSavingThrow, :readonly => true, :id => "will_total"  -%></td>
 		<td class="addition">=</td>		
 		<td><%= f.text_field :willbasesavingthrow  -%></td>
 		<td class="addition">+</td>
-		<td><%= f.text_field :wisdom_bonus, :readonly => true  -%></td>
+		<td><%= f.text_field :wisdom_bonus, :readonly => true, :id => "will_wisdom"  -%></td>
 		<td class="addition">+</td>
 		<td><%= f.text_field :willmagicsavingthrow  -%></td>
 		<td class="addition">+</td>

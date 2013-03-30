@@ -1,0 +1,24 @@
+//Strength modifier
+<% if params[:intelligence] %>
+	$("#intelligencemodifierbonus").val(<%= @character_sheet.characteristic_bonus(@intelligence) %>);
+	
+	if($("#temporaryintelligencemodifier").val() == "")
+	{
+		UpdateIntelligence();
+	}
+	
+<% else %>
+	$("#temporaryintelligencemodifierbonus").val(<%= @character_sheet.characteristic_bonus(@intelligence) %>);
+	UpdateIntelligence();
+<% end %>
+
+function UpdateIntelligence()
+{
+	// Skills
+	<% @character_sheet.abilities.each_with_index do |ability, index| %>
+	<% if ability.characteristic == "intelligence" && ability.ranks != nil %>    
+		$("#character_sheet_abilities_attributes_<%= index -%>_bonus").val(<%= @character_sheet.intelligence_bonus -%>);  
+		$("#character_sheet_abilities_attributes_<%= index -%>_skill_modifier").val(<%= ability.ranks.to_i + ability.misc.to_i + @character_sheet.intelligence_bonus -%>);  
+	<% end %>
+	<% end %>
+}

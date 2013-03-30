@@ -62,7 +62,7 @@ class Sheet < Prawn::Document
     #Feats
      x_position = 280
      bounding_box([x_position, bounds.top], :width => 80, :height => 200) do 
-       y_position = 200
+     y_position = 200
     
       @character.feats.each do |feat|
          y_position -= 18
@@ -1101,8 +1101,10 @@ class Sheet < Prawn::Document
                               :valign => :center
 
         x_position += 10
+        attacks = 0
+        attacks = @character.attacks[0][1] if @character.attacks && @character.attacks.length > 0
         stroke_rectangle([x_position, y_position], width, height )
-        formatted_text_box   [{:text => @character.attacks[0][1].to_s, :color => "000000", :size => FONT_SIZE}],
+        formatted_text_box   [{:text => attacks.to_s, :color => "000000", :size => FONT_SIZE}],
                               :at => [x_position, y_position],
                               :height => height, 
                               :width => width,

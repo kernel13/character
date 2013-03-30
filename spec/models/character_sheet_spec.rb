@@ -6,26 +6,33 @@ describe CharacterSheet, ".validates" do
       @characterSheet = CharacterSheet.new
   end
   
+  it "should save" do
+    character_sheet = FactoryGirl.create(:full_sheet)
+    lambda { character_sheet.save }.should_not be_nil
+  end
+  
   # => General information
-  it "should not allow empty name" do
-    @characterSheet.should_not be_valid
-  end
+  describe "General information" do
+      it "should not allow empty name" do
+        @characterSheet.should_not be_valid
+      end
   
-  it "should not validate height if not a number" do
-    @characterSheet.height = "height" 
-    @characterSheet.should_not be_valid
-  end
+      it "should not validate height if not a number" do
+        @characterSheet.height = "height" 
+        @characterSheet.should have_at_least(1).error_on(:height)
+      end
 
-  it "should not validate weight if not a number" do    
-    @characterSheet.weight = "weight" 
-    @characterSheet.should_not be_valid
+      it "should not validate weight if not a number" do    
+        @characterSheet.weight = "weight" 
+        @characterSheet.should have_at_least(1).error_on(:weight)
+      end
+  
+      it "should not validate age if not a number" do    
+        @characterSheet.age = "age" 
+        @characterSheet.should have_at_least(1).error_on(:age)
+      end
   end
   
-  it "should not validate age if not a number" do    
-    @characterSheet.age = "weight" 
-    @characterSheet.should_not be_valid
-  end
-    
   # => Characteristic
   it "should not validate strength if not a number" do    
     @characterSheet.strength = "strengh"

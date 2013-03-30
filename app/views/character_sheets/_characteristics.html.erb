@@ -10,54 +10,54 @@
 		<td  class="CharacterSheetLabel">
 			<span><%= t('character_sheet.strength')[0..2].upcase %></span><br /><small><%= t('character_sheet.strength') %></small>
 		</td>
-		<td><%= f.text_field :strength -%></td>
-		<td class="abilitybonus"><%=  f.text_field :current_strength_bonus, :readonly => true, :id => "strengthmodifier" -%></td>
-		<td ><%= f.text_field :temporarystrength  -%></td>
-		<td class="temporarybonus"><%= f.text_field :current_tempstrength_bonus, :readonly => true, :id => "tempstrengthmodifier" -%></td>
+		<td><%= f.text_field :strength, :id => "strengthmodifier" -%></td>
+		<td class="abilitybonus"><%=  f.text_field :current_strength_bonus, :readonly => true, :id => "strengthmodifierbonus" -%></td>
+		<td ><%= f.text_field :temporarystrength, :id => "temporarystrengthmodifier"  -%></td>
+		<td class="temporarybonus"><%= f.text_field :current_tempstrength_bonus, :readonly => true, :id => "temporarystrengthmodifierbonus" -%></td>
 	</tr>
 	<tr>
 			<td class="CharacterSheetLabel">
 				<span class="shortName"><%= t('character_sheet.dexterity')[0..2].upcase %></span></br><small><%= t('character_sheet.dexterity') %></small>
 			</td>
-			<td><%= f.text_field :dexterity, :id => "dexterityinput" -%><br /></td>
-			<td class="abilitybonus"><%=  f.text_field :current_dexterity_bonus, :readonly => true, :id => "dexteritymodifier" -%></td>
-			<td class="temporarybonus"><%= f.text_field :temporarydexterity  -%><br /></td>
-			<td class="temporarybonus"><%= f.text_field :current_tempdexterity_bonus, :readonly => true, :id => "tempdexteritymodifier"-%></td>
+			<td><%= f.text_field :dexterity, :id => "dexteritymodifier" -%><br /></td>
+			<td class="abilitybonus"><%=  f.text_field :current_dexterity_bonus, :readonly => true, :id => "dexteritymodifierbonus" -%></td>
+			<td class="temporarybonus"><%= f.text_field :temporarydexterity, :id => "temporarydexteritymodifier"  -%><br /></td>
+			<td class="temporarybonus"><%= f.text_field :current_tempdexterity_bonus, :readonly => true, :id => "temporarydexteritymodifierbonus"-%></td>
 	</tr>
 	<tr>
 			<td class="CharacterSheetLabel">
 				<span class="shortName"><%= t('character_sheet.constitution')[0..2].upcase %></span><br /><small><%= t('character_sheet.constitution') %></small>
 			</td>
-			<td><%= f.text_field :constitution -%><br /></td>
-			<td class="abilitybonus"><%=  f.text_field :current_constitution_bonus, :readonly => true, :id => "constitutionmodifier" -%></td>
-			<td class="temporarybonus"><%= f.text_field :temporaryconstitution  -%><br /></td>
-			<td class="temporarybonus"><%=  f.text_field :current_tempconstitution_bonus, :readonly => true, :id => "tempconstitutionmodifier" -%></td>
+			<td><%= f.text_field :constitution, :id => "constitutionmodifier" -%><br /></td>
+			<td class="abilitybonus"><%=  f.text_field :current_constitution_bonus, :readonly => true, :id => "constitutionmodifierbonus" -%></td>
+			<td class="temporarybonus"><%= f.text_field :temporaryconstitution, :id => "temporaryconstitutionmodifier"  -%><br /></td>
+			<td class="temporarybonus"><%=  f.text_field :current_tempconstitution_bonus, :readonly => true, :id => "temporaryconstitutionmodifierbonus" -%></td>
 	</tr>
 	<tr>
 		<td class="CharacterSheetLabel">
 			<span class="shortName"><%= t('character_sheet.intelligence')[0..2].upcase %></span></br><small><%= t('character_sheet.intelligence') %></small>
 		</td>
-		<td><%= f.text_field :intelligence -%><br /></td>
-		<td class="abilitybonus"><%=  f.text_field :current_intelligence_bonus, :readonly => true, :id => "intelligencemodifier" -%></td>
-		<td class="temporarybonus"><%= f.text_field :temporaryintelligence  -%><br /></td>
-		<td class="temporarybonus"><%=  f.text_field :current_tempintelligence_bonus, :readonly => true, :id => "tempintelligencemodifier" -%></td>
+		<td><%= f.text_field :intelligence, :id => "intelligencemodifier" -%><br /></td>
+		<td class="abilitybonus"><%=  f.text_field :current_intelligence_bonus, :readonly => true, :id => "intelligencemodifierbonus" -%></td>
+		<td class="temporarybonus"><%= f.text_field :temporaryintelligence, :id => "temporaryintelligencemodifier"  -%><br /></td>
+		<td class="temporarybonus"><%=  f.text_field :current_tempintelligence_bonus, :readonly => true, :id => "temporaryintelligencemodifierbonus" -%></td>
 	</tr>
 	<tr>
 		<td class="CharacterSheetLabel">
 			<span class="shortName"><%= t('character_sheet.wisdom')[0..2].upcase %></span><br /><small><%= t('character_sheet.wisdom') %></small>
 		</td>
-		<td><%= f.text_field :wisdom  -%><br /></td>
-		<td class="abilitybonus"><%=  f.text_field :current_wisdom_bonus, :readonly => true, :id => "wisdommodifier" -%></td>
-		<td class="temporarybonus"><%= f.text_field :temporarywisdom  -%><br /></td>
-		<td class="temporarybonus"><%=  f.text_field :current_tempwisdom_bonus, :readonly => true, :id => "tempwisdommodifier" -%></td>
+		<td><%= f.text_field :wisdom, :id => "wisdommodifier"  -%><br /></td>
+		<td class="abilitybonus"><%=  f.text_field :current_wisdom_bonus, :readonly => true, :id => "wisdommodifierbonus" -%></td>
+		<td class="temporarybonus"><%= f.text_field :temporarywisdom, :id => "temporarywisdommodifier"  -%><br /></td>
+		<td class="temporarybonus"><%=  f.text_field :current_tempwisdom_bonus, :readonly => true, :id => "temporarywisdommodifierbonus" -%></td>
 	</tr>
 	<tr>
 			<td class="CharacterSheetLabel">
 				<span class="shortName"><%= t('character_sheet.charisma')[0..2].upcase %></span><br /><small><%= t('character_sheet.charisma') %></small>
 			</td>
-			<td><%= f.text_field :charisma  -%><br /></td>
-			<td class="abilitybonus"><%=  f.text_field :current_charisma_bonus, :readonly => true, :id => "charismamodifier" -%></td>
-			<td class="temporarybonus"><%= f.text_field :temporarycharisma  -%><br /></td>
-			<td class="temporarybonus"><%=  f.text_field :current_tempcharisma_bonus, :readonly => true, :id => "tempcharismamodifier" -%></td>
+			<td><%= f.text_field :charisma, :id => "charismamodifier"  -%><br /></td>
+			<td class="abilitybonus"><%=  f.text_field :current_charisma_bonus, :readonly => true, :id => "charismamodifierbonus" -%></td>
+			<td class="temporarybonus"><%= f.text_field :temporarycharisma, :id => "temporarycharismamodifier"  -%><br /></td>
+			<td class="temporarybonus"><%=  f.text_field :current_tempcharisma_bonus, :readonly => true, :id => "temporarycharismamodifierbonus" -%></td>
 	</tr>
 </table>

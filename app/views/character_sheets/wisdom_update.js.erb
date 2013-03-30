@@ -1,0 +1,29 @@
+// Wisdom modifier
+<% if params[:wisdom] %>
+	$("#wisdommodifierbonus").val(<%= @character_sheet.characteristic_bonus(@wisdom) %>);
+	
+	if($("#temporarywisdommodifier").val() == "")
+	{
+		UpdateWisdom();
+	}
+	
+<% else %>
+	$("#temporarywisdommodifierbonus").val(<%= @character_sheet.characteristic_bonus(@wisdom) %>);	
+	UpdateWisdom();	
+<% end %>
+
+function UpdateWisdom()
+{	
+	// Reflex saving trow
+	$("#will_wisdom").val(<%= @character_sheet.wisdom_bonus %>);
+	$("#will_total").val(<%= @character_sheet.willTotalSavingThrow %>);
+
+	// Skills
+	<% @character_sheet.abilities.each_with_index do |ability, index| %>
+	<% if ability.characteristic == "wisdom" && ability.ranks != nil %>    
+		$("#character_sheet_abilities_attributes_<%= index -%>_bonus").val(<%= @character_sheet.wisdom_bonus -%>);  
+		$("#character_sheet_abilities_attributes_<%= index -%>_skill_modifier").val(<%= ability.ranks.to_i + ability.misc.to_i + @character_sheet.wisdom_bonus -%>);  
+	<% end %>
+	<% end %>
+}
+

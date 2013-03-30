@@ -10,13 +10,10 @@
 	      </ul>
 	  </div>
   	<% end %>
-
-    <%= f.submit "Save" %>
-	<%= link_to "PDF", character_sheet_path(@character_sheet, format: "pdf") unless @character_sheet.new_record? %>
-    
+   
     <%= f.hidden_field :id, :id => "characterSheetId" %>
- 	<div id="character_sheet">
-		<div class="character_sheet_page span-24">
+ 	<div id="character_sheet">	
+		<div class="character_sheet_page span-24">					
 			<div id="character_sheet_header" class="span-18">
 			<div class="span-18">
 	  			  <!-------------------------------------------------------------------------------->
@@ -201,9 +198,9 @@
 						<table class="no-zebra">
 							<tr>
 								<td class="CharacterSheetLabel"><%= t('character_sheet.grapple.label').html_safe -%></td>	
-								<td><%= f.text_field :totalgrapple  -%></td>
+								<td><%= f.text_field :totalgrapple, :id => "totalgrapple"  -%></td>
 								<td class="addition">=</td>
-								<td><%= f.text_field :strength_bonus, :readonly => true  -%></td>	
+								<td><%= f.text_field :strength_bonus, :readonly => true, :id => "grapple_strengthbonus"  -%></td>	
 								<td class="addition">+</td>
 								<td><span><%= @character_sheet.attacks[0][1] if @character_sheet.attacks && @character_sheet.attacks.count > 0  -%></span></td>
 								<td class="addition">+</td>
@@ -275,26 +272,7 @@
 						</tr>				
 
 						<%=	f.fields_for :abilities do |ability_form| %>	
-							<tr>
-								<td class="skillclass"><%= ability_form.check_box :skill_class %></td>
-								<td class="skillname">
-									<% if ability_form.object.children? %>
-										<%= ability_form.label ability_form.object.name[0..3] -%></span>
-										<%= ability_form.select(:skill_id, ability_form.object.children)  -%>
-									<% elsif ability_form.object.skill.parent %>
-									   <%= ability_form.label ability_form.object.skill.parent.name[0..3] -%></span>
-									   <%= ability_form.select(:skill_id, ability_form.object.parent_children)  -%>
-									<% else %>
-										<%= ability_form.label ability_form.object.name -%></span>
-										<%= ability_form.hidden_field :skill_id %>
-									<% end %>
-								</td>
-								<td class="skillkeyability"><%= ability_form.text_field :characteristic_short, :readonly => true %></td>
-								<td class="skillmodifier"><%= ability_form.text_field :skill_modifier, :readonly => true %></td>
-								<td class="skillabilitymodifier"> = <%= ability_form.text_field :bonus, :readonly => true  %></td>
-								<td class="skillranks">+ <%= ability_form.text_field :ranks %> + </td>
-								<td class="skillmisc"><%= ability_form.text_field :misc %></td>
-							</tr>
+							<%= render 'ability_line', :ability_form => ability_form %>
 						<% end %>
 					</table>
 				</div>

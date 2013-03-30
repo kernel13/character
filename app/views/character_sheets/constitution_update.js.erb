@@ -1,0 +1,28 @@
+//Strength modifier
+<% if params[:constitution] %>
+	$("#constitutionmodifierbonus").val(<%= @character_sheet.characteristic_bonus(@constitution) %>);
+	
+	if($("#temporaryconstitutionmodifier").val() == "")
+	{
+		UpdateConstitution();
+	}
+	
+<% else %>
+	$("#temporaryconstitutionmodifierbonus").val(<%= @character_sheet.characteristic_bonus(@constitution) %>);
+	UpdateConstitution();
+<% end %>
+
+function UpdateConstitution()
+{
+	// Fortitude saving throw
+	$("#fortitude_constit").val(<%= @character_sheet.constitution_bonus -%>);
+	$("#fortitude_total").val(<%= @character_sheet.fortitudeTotalSavingThrow %>);
+	
+	// Skills
+	<% @character_sheet.abilities.each_with_index do |ability, index| %>
+	<% if ability.characteristic == "constitution" && ability.ranks != nil %>    
+		$("#character_sheet_abilities_attributes_<%= index -%>_bonus").val(<%= @character_sheet.constitution_bonus -%>);  
+		$("#character_sheet_abilities_attributes_<%= index -%>_skill_modifier").val(<%= ability.ranks.to_i + ability.misc.to_i + @character_sheet.constitution_bonus -%>);  
+	<% end %>
+	<% end %>
+}

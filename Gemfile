@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -19,6 +19,11 @@ group :test do
   gem 'rb-fsevent'
   gem 'spork-rails'
   gem 'guard-spork'
+  gem 'factory_girl_rails'
+  
+  # Integration test
+  gem 'capybara'
+  gem 'launchy'
 end
 
 # Gems used only for assets and not required
@@ -52,3 +57,9 @@ gem 'jquery-rails'
 gem 'blueprint-rails'
 
 gem 'prawn'
+gem 'devise'
+
+gem 'activeadmin'
+gem 'meta_search', '>= 1.1.0.pre'	
+
+gem 'acts_as_tenant'

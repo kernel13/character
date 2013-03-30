@@ -1,8 +1,10 @@
 class CharacterSheetsController < ApplicationController
+  before_filter :authenticate_user!
+  
   # GET /character_sheets
   # GET /character_sheets.json
   def index
-    @character_sheets = CharacterSheet.all
+    @character_sheets = CharacterSheet.all 
     @character_sheet = @character_sheets.first 
     @skills = Skill.all
     @abilities = @character_sheet.abilities if @character_sheet
@@ -17,7 +19,7 @@ class CharacterSheetsController < ApplicationController
   # GET /character_sheets/1.json
   def show
     @character_sheet = CharacterSheet.find(params[:id])
-    @character_sheets = CharacterSheet.all
+    @character_sheets = CharacterSheet.all 
     
     
     respond_to do |format|
@@ -125,9 +127,14 @@ class CharacterSheetsController < ApplicationController
   
   def dexterity_update 
      @character_sheet = CharacterSheet.find(params[:id])
-     @dexterity = params[:dexterity]
      
-     @character_sheet.dexterity = @dexterity 
+     if params[:dexterity]
+         @dexterity = params[:dexterity]
+         @character_sheet.dexterity = @dexterity 
+     else
+         @dexterity = params[:temporarydexterity]
+         @character_sheet.temporarydexterity = @dexterity
+     end
      
      respond_to do |format|
         format.js
@@ -136,13 +143,89 @@ class CharacterSheetsController < ApplicationController
   
   def strength_update 
       @character_sheet = CharacterSheet.find(params[:id])
-      @strength = params[:strength]
-
-      @character_sheet.strength = @strength 
+      
+      if params[:strength]
+        @strength = params[:strength]
+        @character_sheet.strength = @strength 
+      else
+        @strength = params[:temporarystrength]
+        @character_sheet.temporarystrength = @strength
+      end
 
       respond_to do |format|
          format.js
       end
    end
+   
+   def constitution_update 
+       @character_sheet = CharacterSheet.find(params[:id])
+
+       if params[:constitution]
+         @constitution = params[:constitution]
+         @character_sheet.constitution = @constitution 
+       else
+         @constitution = params[:temporaryconstitution]
+         @character_sheet.temporaryconstitution = @constitution
+       end
+
+       respond_to do |format|
+          format.js
+       end
+    end
+    
+     def intelligence_update 
+         @character_sheet = CharacterSheet.find(params[:id])
+
+         if params[:intelligence]
+           @intelligence = params[:intelligence]
+           @character_sheet.intelligence = @intelligence 
+         else
+           @intelligence = params[:temporaryintelligence]
+           @character_sheet.temporaryintelligence = @intelligence
+         end
+
+         respond_to do |format|
+            format.js
+         end
+      end
   
+      def wisdom_update 
+          @character_sheet = CharacterSheet.find(params[:id])
+
+          if params[:wisdom]
+            @wisdom = params[:wisdom]
+            @character_sheet.wisdom = @wisdom 
+          else
+            @wisdom = params[:temporarywisdom]
+            @character_sheet.temporarywisdom = @wisdom
+          end
+
+          respond_to do |format|
+             format.js
+          end
+       end
+       
+      def charisma_update 
+           @character_sheet = CharacterSheet.find(params[:id])
+
+           if params[:charisma]
+             @charisma = params[:charisma]
+             @character_sheet.charisma = @charisma 
+           else
+             @charisma = params[:temporarycharisma]
+             @character_sheet.temporarycharisma = @charisma
+           end
+
+           respond_to do |format|
+              format.js
+           end
+        end
+        
+        # def skill_update
+        #          
+        #          
+        #          respond_to do |format|
+        #              format.js
+        #           end      
+        #        end
 end

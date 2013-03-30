@@ -1,0 +1,25 @@
+// Charisma modifier
+<% if params[:charisma] %>
+	$("#charismamodifierbonus").val(<%= @character_sheet.characteristic_bonus(@charisma) %>);
+	
+	if($("#temporarycharismamodifier").val() == "")
+	{
+		UpdateCharisma();
+	}
+	
+<% else %>
+	$("#temporarycharismamodifierbonus").val(<%= @character_sheet.characteristic_bonus(@charisma) %>);	
+	UpdateCharisma();	
+<% end %>
+
+function UpdateCharisma()
+{	
+	// Skills
+	<% @character_sheet.abilities.each_with_index do |ability, index| %>
+	<% if ability.characteristic == "charisma" && ability.ranks != nil %>    
+		$("#character_sheet_abilities_attributes_<%= index -%>_bonus").val(<%= @character_sheet.charisma_bonus -%>);  
+		$("#character_sheet_abilities_attributes_<%= index -%>_skill_modifier").val(<%= ability.ranks.to_i + ability.misc.to_i + @character_sheet.charisma_bonus -%>);  
+	<% end %>
+	<% end %>
+}
+

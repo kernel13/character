@@ -23,7 +23,7 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 #   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 # 
 #   # If you're not using ActiveRecord, or you'd prefer not to run each of your
-#   # examples within a transaction, remove the following line or assign false
+#   # examples within a transaction,r remove the following line or assign false
 #   # instead of true.
 #   config.use_transactional_fixtures = true
 # 
@@ -43,6 +43,7 @@ Spork.prefork do
   ENV['RAILS_ENV'] ||= 'test'
   require File.expand_path('../../config/environment', __FILE__)
   require 'rspec/rails'
+  require 'capybara/rspec' 
  
   Dir[Rails.root.join('spec/support/**/*.rb')].each{|f| require f}
  
@@ -50,7 +51,14 @@ Spork.prefork do
     config.mock_with :rspec
     config.fixture_path = "#{Rails.root}/spec/fixtures"
     config.use_transactional_fixtures = true
- 
+    
+    # Controller
+    config.include Devise::TestHelpers, :type => :controller
+    config.extend ControllerMacros, :type => :controller
+    
+    # Request
+    #config.extend RequestMacros, :type => :request
+    
     ActiveSupport::Dependencies.clear
   end
 end

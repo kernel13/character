@@ -1,3 +1,6 @@
+body{
+	background-image: url("stainedpaper.png");
+}
 table.no-zebra tbody tr:nth-child(even) td,
 table.no-zebra tbody tr.even td {
   background: transparent;
@@ -38,6 +41,7 @@ table.no-zebra tbody tr.even td {
 
 /* Charactersheet page */
 .character_sheet_page {
+	background-color: white;
 	width: 960px;
 	border: solid 1px black;
 	-webkit-border-radius: 5px;
@@ -48,6 +52,10 @@ table.no-zebra tbody tr.even td {
 	 box-shadow: 8px 8px 5px #888888;
 	padding: 5px;
 	margin-bottom: 10px;
+	
+	-moz-box-shadow: 0 0 3px 3px #888;
+    -webkit-box-shadow: 0 0 3px 3px #888;
+    box-shadow: 0 0 3px 3px #888;
 }
 
 #character_sheet_header
@@ -190,5 +198,50 @@ table.no-zebra tbody tr.even td {
 	.title{
  		background-color: black; 	
 		color: white; 
+	}
+}
+
+#login{
+	width: 300px;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+
+#signup{
+	width: 300px;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+
+#character_sheet_top_menu{
+	
+	margin-bottom: 20px;
+	background-image: url("stainedpaper.png");
+
+}
+
+#character_sheet_top_menu a{
+	margin: 20px 30px;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: #000;
+	font-weight: bold;
+}
+
+#character_sheet_top_menu a:hover{
+	text-decoration: underline;
+}
+#login_menu{
+	
+}
+#character_sheet_menu{
+	display: inline;
+}
+
+#login_menu, #character_sheet_menu, {
+	li{
+		display: inline-block;
+		list-style-type: none;
+		margin-right: 20px;
 	}
 }

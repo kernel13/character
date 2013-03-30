@@ -1,39 +1,24 @@
 require 'spec_helper'
 
 describe Skill do
-  
-   def valid_attributes
-      {
-        :name => 'competence name',
-        :characteristic => 'strength'
-      }
-   end
-    
     
     before(:each) do
-        @skill = Skill.new
+        @skill = FactoryGirl.build(:skill)
     end
+  
+    describe "with invalid data" do  
+      it "must have a name" do
+          Skill.new.should have_at_least(1).error_on(:name)
+      end
     
-    it "must have a name" do
-        @skill.should have(1).error_on(:name)
-    end
-    
-    it "must have a characteristic" do
-        @skill.should have(2).error_on(:characteristic)
-    end
-    
-    it "should have a valid characteristc" do
-       @skill.characteristic = "dd"
-       @skill.should have(1).error_on(:characteristic)
-    end
-    
-    it "should be valid with characteristic eq strengh" do
-      @skill.attributes= valid_attributes
-      @skill.should have(0).error_on(:characteristic)
+      it "should have a valid characteristc" do
+         @skill.characteristic = "dd"
+         @skill.should have_at_least(1).error_on(:characteristic)
+      end
     end
     
     it "should have 3 abilities" do
-        @skill.attributes= valid_attributes
+        @skill.attributes= @skill
         @skill.save
         (0..2).each {|i| @skill.abilities.create(:ranks => i)  }
         @skill.abilities.count.should eq(3)    

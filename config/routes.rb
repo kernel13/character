@@ -1,7 +1,20 @@
 Character::Application.routes.draw do
 
+  ActiveAdmin.routes(self)
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
+  devise_for :users
+
+  root :to => "character_sheets#index"
+
   match "/character_sheets/dexterity_update" => "character_sheets#dexterity_update"
-    
+  match "/character_sheets/strength_update" => "character_sheets#strength_update" 
+  match "/character_sheets/constitution_update" => "character_sheets#constitution_update" 
+  match "/character_sheets/intelligence_update" => "character_sheets#intelligence_update" 
+  match "/character_sheets/wisdom_update" => "character_sheets#wisdom_update"
+  match "/character_sheets/charisma_update" => "character_sheets#charisma_update"
+   
   resources :character_sheets do
      #resources :abilities
   end

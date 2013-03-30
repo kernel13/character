@@ -1,4 +1,8 @@
+
+# Class CharacherSheet
+
 class CharacterSheet < ActiveRecord::Base
+    acts_as_tenant (:user)
     
     #relationship
     has_many :abilities, :dependent => :destroy
@@ -10,6 +14,7 @@ class CharacterSheet < ActiveRecord::Base
     has_many :special_abilities, :dependent => :destroy
     has_many :languages, :dependent => :destroy
     has_many :spells, :dependent => :destroy
+    belongs_to :user
     
     accepts_nested_attributes_for :abilities
     accepts_nested_attributes_for :weapons
@@ -31,13 +36,24 @@ class CharacterSheet < ActiveRecord::Base
     validates :speed, :numericality => true, :allow_nil => true
     
     # = Accessor
-    #attr_accessible :name, :race, :deity, :gender, :height, :weight, :sizeCategory, :alignment, :master, :age, :eyes, :hair, :skin
-    #attr_accessible :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma
-    #attr_accessible :temporarystrength, :temporarydexterity, :temporaryconstitution, :temporaryintelligence, :temporarywisdom, :temporarycharisma      
-    #attr_accessible :wounds, :nonelethal, :totalhp, :totalac 
-    #attr_accessible :armorbonus, :shieldbonus, :sizemodifier, :naturalarmor, :deflectionmodifier, :miscmodifier           
-    #attr_accessible :speed                  
-    #attr_accessible :touchac, :flatfootedac, :totalinit, :miscinit     
+    attr_accessible :name, :classes, :race, :deity, :gender, :height, :weight, :sizeCategory, :alignment, :master, :age, :eyes, :hair, :skin
+    attr_accessible :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma
+    attr_accessible :temporarystrength, :temporarydexterity, :temporaryconstitution, :temporaryintelligence, :temporarywisdom, :temporarycharisma      
+    attr_accessible :wounds, :nonelethal, :totalhp, :totalac 
+    attr_accessible :armorbonus, :shieldbonus, :sizemodifier, :naturalarmor, :deflectionmodifier, :miscmodifier           
+    attr_accessible :speed                  
+    attr_accessible :touchac, :flatfootedac, :totalinit, :miscinit     
+    attr_accessible :current_tempstrength_bonus, :current_tempdexterity_bonus, :current_tempconstitution_bonus, :current_tempintelligence_bonus, :current_tempwisdom_bonus, :current_tempcharisma_bonus
+    attr_accessible :current_strength_bonus, :current_dexterity_bonus, :current_constitution_bonus, :current_intelligence_bonus, :current_wisdom_bonus, :current_charisma_bonus
+    attr_accessible :total_armorclass, :dexterity_bonus, :initiative, :fortitudeTotalSavingThrow, :fortitudebasesavingthrow, :constitution_bonus
+    attr_accessible :fortitudemagicsavingthrow, :fortitudemiscsavingthrow, :fortitudetempsavingthrow, :reflexTotalSavingThrow, :reflexbasesavingthrow, :reflexmagicsavingthrow
+    attr_accessible :reflexmiscsavingthrow, :willTotalSavingThrow, :willbasesavingthrow, :wisdom_bonus, :willmagicsavingthrow, :willmiscsavingthrow
+    attr_accessible :base_attack, :spell_resist, :totalgrapple, :strength_bonus, :grapplemisc, :weapons_attributes, :abilities_attributes, :campaign, :experience, :gears_attributes
+    attr_accessible :possessions_attributes, :total_load, :light_load, :medium_load, :heavy_load, :lift_over_head, :lift_off_ground, :push_or_drag, :money, :feats_attributes
+    attr_accessible :special_abilities_attributes, :languages_attributes, :turn_undead_times_per_day, :turn_undead_check, :turn_undead_damage, :psi_powers_known, :psi_max_level
+    attr_accessible :psi_primary_dicipline, :psi_power_points_per_day, :divine_domain_name1, :divine_granted_power1, :divine_domain_name2, :divine_granted_power2
+    attr_accessible :arcane_speciality_school, :arcane_prohibited_school1, :arcane_prohibited_school2, :arcane_spell_failure, :spells_attributes, :notes
+    
     attr_accessor :total_armorclass, :initiative
     attr_accessor :fortitudeTotalSavingThrow, :reflexTotalSavingThrow, :willTotalSavingThrow
     attr_accessor :strength_bonus, :dexterity_bonus, :constitution_bonus, :wisdom_bonus, :intelligence_bonus, :charisma_bonus
